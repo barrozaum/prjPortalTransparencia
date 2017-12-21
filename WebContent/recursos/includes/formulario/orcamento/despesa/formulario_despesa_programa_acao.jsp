@@ -11,21 +11,17 @@
                 <!-- inicio dados inscriÃ§Ã£o-->
                 <div class="row">
 					<div class="col-sm-6">
-						<label for="id_exercicio">Exercício</label> <select
-							name="name_exercicio" id="id_exercicio" class="form-control">
-							<option value="">SELECIONE O EXERCÍCIO</option>
-							<option value="2015">2015</option>
-						</select><br />
+						<div id="select_exercicio"></div>
 					</div>
 				</div>
 
-               <div class="row">
+				<div class="row">
 					<div class="col-sm-12">
 						<label for="id_unidade_gestora">UNIDADE GESTORA</label> <select
 							name="name_unidade_gestora" id="id_unidade_gestora"
 							class="form-control">
 							<option value="">ESCOLHA A UNIDADE GESTORA</option>
-							<c:forEach items="${mbUnidade.findAllUnidadeGestora()}"
+							<c:forEach items="${mbUnidade.getListaUnidadeGestora(null)}"
 								var="linha">
 								<option value="${linha.codUnidadeGestora}">${linha.descricaoUnidade}</option>
 							</c:forEach>
@@ -60,6 +56,11 @@
     </div>
 </form>
 
+
+<!-- JQUERY PRA LISTAR OS EXERCICIOS -->
+<script type="text/javascript" src="recursos/js/exercicioBase.js"></script>
+<script type="text/javascript" src="recursos/js/orcamento/orcamentoDespesaFuncaoSubFuncao.js"></script>
+<script type="text/javascript" src="recursos/js/trocarFuncaoSubFuncao.js"></script>
 
 
 

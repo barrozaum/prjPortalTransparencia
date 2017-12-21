@@ -4,8 +4,9 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import control.ControleAdicionarMascara;
+import dto.OrcamentoDespesaFuncaoSubFuncao;
 import entity.Funcao;
-import entity.OrcamentoDespesaFuncaoSubFuncao;
 import entity.SubFuncao;
 
 public class DaoOrcamentoDespesaFuncaoSubFuncao extends Dao {
@@ -29,7 +30,6 @@ public class DaoOrcamentoDespesaFuncaoSubFuncao extends Dao {
 
 		if (codigoSubFuncao > 0) {
 			sql = sql + "	AND s.codigo = ?";
-			System.out.println("codSub" + codigoSubFuncao);
 		}
 
 		if (unidadeGestora != 9999) {
@@ -59,18 +59,20 @@ public class DaoOrcamentoDespesaFuncaoSubFuncao extends Dao {
 			odfs = new OrcamentoDespesaFuncaoSubFuncao();
 			Funcao funcao = new Funcao();
 			SubFuncao sb = new SubFuncao();
-			funcao.setCodigo(rs.getInt("codigoFuncao"));
+			funcao.setCodigo(rs.getString("codigoFuncao"));
 			funcao.setDescricao(rs.getString("desricaoFuncao"));
 			sb.setCodigo(rs.getInt("codigoSubFuncao"));
 			sb.setDescricao(rs.getString("descricaoSubFuncao"));
 			odfs.setFuncao(funcao);
 			odfs.setSubFuncao(sb);
-			odfs.setValor(NumberFormat.getCurrencyInstance().format(rs.getDouble("total")));
+			odfs.setValor(ControleAdicionarMascara.formataDataReal(rs.getString("total")));
 			odfs.setExercicioOrcamento(exercicio);
 			lista.add(odfs);
-			valorTotalCalculado +=rs.getDouble("total");
+			valorTotalCalculado += rs.getDouble("total");
 		}
-		odfs.setValorTotalOrcado(NumberFormat.getCurrencyInstance().format(valorTotalCalculado));
+		if (odfs != null) {
+			odfs.setValorTotalOrcado(ControleAdicionarMascara.formataDataReal(valorTotalCalculado.toString()));
+		}
 		close();
 
 		return lista;

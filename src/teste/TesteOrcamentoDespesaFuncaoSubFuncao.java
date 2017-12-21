@@ -2,7 +2,7 @@ package teste;
 
 import java.util.List;
 
-import entity.OrcamentoDespesaFuncaoSubFuncao;
+import dto.OrcamentoDespesaFuncaoSubFuncao;
 import persistence.DaoOrcamentoDespesaFuncaoSubFuncao;
 
 public class TesteOrcamentoDespesaFuncaoSubFuncao {

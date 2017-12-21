@@ -181,6 +181,7 @@ optgroup {
     font-weight: bold;
 }
 table {
+	
     border-spacing: 0;
     border-collapse: collapse;
 }
@@ -1408,6 +1409,7 @@ pre code {
 table {
     max-width: 100%;
     background-color: transparent;
+    font-size: 100%
 }
 th {
     text-align: left;

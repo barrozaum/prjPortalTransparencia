@@ -3,21 +3,30 @@ package manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.OrcamentoDespesaFonteRecurso;
-import entity.OrcamentoDespesaFuncaoSubFuncao;
+import dto.OrcamentoDespesaFonteRecurso;
+import dto.OrcamentoDespesaFuncaoSubFuncao;
+import dto.OrcamentoDespesaGrupoDespesa;
+import entity.Empenho;
+import persistence.Dao;
+import persistence.DaoEmpenho;
 import persistence.DaoOrcamentoDespesaFonteRecurso;
 import persistence.DaoOrcamentoDespesaFuncaoSubFuncao;
+import persistence.DaoOrcamentoDespesaGrupoDespesa;
 
 public class ManagerOrcamento {
 
 	private OrcamentoDespesaFuncaoSubFuncao orcamentoDespesaFuncaoSubFuncao;
 	private List<OrcamentoDespesaFuncaoSubFuncao> listaOrcamentoDespesaFuncaoSubFuncao;
 	private OrcamentoDespesaFonteRecurso orcamentoFonteRecurso;
-	private List<OrcamentoDespesaFonteRecurso> listaOrcamentoFonteRecurso;
+	private List<OrcamentoDespesaFonteRecurso> listaOrcamentoDespesaFonteRecurso;
+	private OrcamentoDespesaGrupoDespesa orcamentoDespesaGrupoDespesa;
+	private List<OrcamentoDespesaGrupoDespesa> listaOrcamentoDespesaGrupoDespesa;
 
 	public ManagerOrcamento() {
 		listaOrcamentoDespesaFuncaoSubFuncao = new ArrayList<OrcamentoDespesaFuncaoSubFuncao>();
-		listaOrcamentoFonteRecurso = new ArrayList<OrcamentoDespesaFonteRecurso>();
+		listaOrcamentoDespesaFonteRecurso = new ArrayList<OrcamentoDespesaFonteRecurso>();
+		listaOrcamentoDespesaGrupoDespesa = new ArrayList<OrcamentoDespesaGrupoDespesa>();
+
 	}
 
 	public OrcamentoDespesaFuncaoSubFuncao getOrcamentoDespesaFuncaoSubFuncao() {
@@ -45,12 +54,30 @@ public class ManagerOrcamento {
 		this.orcamentoFonteRecurso = orcamentoFonteRecurso;
 	}
 
-	public List<OrcamentoDespesaFonteRecurso> getListaOrcamentoFonteRecurso() {
-		return listaOrcamentoFonteRecurso;
+	public List<OrcamentoDespesaFonteRecurso> getListaOrcamentoDespesaFonteRecurso() {
+		return listaOrcamentoDespesaFonteRecurso;
 	}
 
-	public void setListaOrcamentoFonteRecurso(List<OrcamentoDespesaFonteRecurso> listaOrcamentoFonteRecurso) {
-		this.listaOrcamentoFonteRecurso = listaOrcamentoFonteRecurso;
+	public void setListaOrcamentoDespesaFonteRecurso(
+			List<OrcamentoDespesaFonteRecurso> listaOrcamentoDespesaFonteRecurso) {
+		this.listaOrcamentoDespesaFonteRecurso = listaOrcamentoDespesaFonteRecurso;
+	}
+
+	public OrcamentoDespesaGrupoDespesa getOrcamentoDespesaGrupoDespesa() {
+		return orcamentoDespesaGrupoDespesa;
+	}
+
+	public void setOrcamentoDespesaGrupoDespesa(OrcamentoDespesaGrupoDespesa orcamentoDespesaGrupoDespesa) {
+		this.orcamentoDespesaGrupoDespesa = orcamentoDespesaGrupoDespesa;
+	}
+
+	public List<OrcamentoDespesaGrupoDespesa> getListaOrcamentoDespesaGrupoDespesa() {
+		return listaOrcamentoDespesaGrupoDespesa;
+	}
+
+	public void setListaOrcamentoDespesaGrupoDespesa(
+			List<OrcamentoDespesaGrupoDespesa> listaOrcamentoDespesaGrupoDespesa) {
+		this.listaOrcamentoDespesaGrupoDespesa = listaOrcamentoDespesaGrupoDespesa;
 	}
 
 	public List<OrcamentoDespesaFuncaoSubFuncao> pesquisaOrcamentoDespesaFuncaoSubFuncao(Integer exercicio,
@@ -67,11 +94,45 @@ public class ManagerOrcamento {
 	public List<OrcamentoDespesaFuncaoSubFuncao> pesquisaOrcamentoDespesaFonteRecurso(Integer exercicio,
 			Integer unidadeGestora) {
 		try {
-			listaOrcamentoFonteRecurso = new DaoOrcamentoDespesaFonteRecurso().findAll(exercicio, unidadeGestora);
+			listaOrcamentoDespesaFonteRecurso = new DaoOrcamentoDespesaFonteRecurso().findAll(exercicio,
+					unidadeGestora);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listaOrcamentoDespesaFuncaoSubFuncao;
+	}
+
+	public List<OrcamentoDespesaGrupoDespesa> pesquisaOrcamentoDespesaGrupoDespesa(Integer exercicio,
+			Integer unidadeGestora) {
+		try {
+			DaoOrcamentoDespesaGrupoDespesa d = new DaoOrcamentoDespesaGrupoDespesa();
+			listaOrcamentoDespesaGrupoDespesa = d.relatorioOrcamentoDespesaGrupo(exercicio, unidadeGestora);
+			for (OrcamentoDespesaGrupoDespesa orcamentoDespesaGrupoDespesaLocal : listaOrcamentoDespesaGrupoDespesa) {
+				d.verificarCategoria(exercicio, orcamentoDespesaGrupoDespesaLocal);
+				d.verificarNatureza(exercicio, orcamentoDespesaGrupoDespesaLocal);
+				d.verificarModalidade(exercicio, orcamentoDespesaGrupoDespesaLocal);
+				d.verificarElemento(exercicio, orcamentoDespesaGrupoDespesaLocal);
+				d.verificarSubElemento(exercicio, orcamentoDespesaGrupoDespesaLocal);
+				orcamentoDespesaGrupoDespesa= orcamentoDespesaGrupoDespesaLocal;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listaOrcamentoDespesaGrupoDespesa;
+	}
+
+	public String valorPorNivel(Integer nivel, OrcamentoDespesaGrupoDespesa orcamento) {
+		try {
+			DaoOrcamentoDespesaGrupoDespesa d = new DaoOrcamentoDespesaGrupoDespesa();
+			d.verificarValorOrcadoGrupo(nivel, orcamento);
+			return orcamento.getValorOrcadoGrupo();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 }

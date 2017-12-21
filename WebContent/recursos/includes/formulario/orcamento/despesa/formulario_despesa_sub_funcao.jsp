@@ -21,7 +21,7 @@
 							name="name_unidade_gestora" id="id_unidade_gestora"
 							class="form-control">
 							<option value="">ESCOLHA A UNIDADE GESTORA</option>
-							<c:forEach items="${mbUnidade.getListaUnidadeGestora(2016)}"
+							<c:forEach items="${mbUnidade.getListaUnidadeGestora(null)}"
 								var="linha">
 								<option value="${linha.codUnidadeGestora}">${linha.descricaoUnidade}</option>
 							</c:forEach>
@@ -61,5 +61,5 @@
 
 <!-- JQUERY PRA LISTAR OS EXERCICIOS -->
 <script type="text/javascript" src="recursos/js/exercicioBase.js"></script>
-<script type="text/javascript" src="recursos/js/trocarFuncaoSubFuncao.js"></script>
 <script type="text/javascript" src="recursos/js/orcamento/orcamentoDespesaFuncaoSubFuncao.js"></script>
+<script type="text/javascript" src="recursos/js/trocarFuncaoSubFuncao.js"></script>

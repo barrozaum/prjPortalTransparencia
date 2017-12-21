@@ -4,13 +4,9 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-
+import control.ControleAdicionarMascara;
+import dto.OrcamentoDespesaFonteRecurso;
 import entity.FonteRecurso;
-import entity.Funcao;
-import entity.OrcamentoDespesaFonteRecurso;
-import entity.OrcamentoDespesaFuncaoSubFuncao;
-import entity.SubFuncao;
 
 public class DaoOrcamentoDespesaFonteRecurso extends Dao {
 
@@ -28,24 +24,24 @@ public class DaoOrcamentoDespesaFonteRecurso extends Dao {
 		stmt.setInt(1, unidadeGestora);
 		rs = stmt.executeQuery();
 		OrcamentoDespesaFonteRecurso odfr = null;
-		Double valorTotalCalculado =0.;
+		Double valorTotalCalculado = 0.;
 		while (rs.next()) {
 			odfr = new OrcamentoDespesaFonteRecurso();
 			FonteRecurso fr = new FonteRecurso();
 			fr.setCodigo(rs.getString("CODIGO"));
 			fr.setNome(rs.getString("DESCRICAO"));
 			odfr.setFonte(fr);
-			odfr.setValorOrcado(NumberFormat.getCurrencyInstance().format(rs.getDouble("VALOR_ORCADO")));
+			odfr.setValorOrcado(ControleAdicionarMascara.formataDataReal(rs.getString("VALOR_ORCADO")));
 			odfr.setExercicioOrcamento(exercicio);
-			
-//			CALCULO VALOR TOTAL
+
+			// CALCULO VALOR TOTAL
 			valorTotalCalculado += rs.getDouble("VALOR_ORCADO");
 			lista.add(odfr);
 		}
-		odfr.setValorTotalOrcado(NumberFormat.getCurrencyInstance().format(valorTotalCalculado));
-		
-		
-		
+		if (odfr != null) {
+			odfr.setValorTotalOrcado(NumberFormat.getCurrencyInstance().format(valorTotalCalculado));
+		}
+
 		close();
 		return lista;
 	}

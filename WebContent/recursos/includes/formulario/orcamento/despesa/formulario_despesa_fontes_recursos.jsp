@@ -20,15 +20,13 @@
 							name="name_unidade_gestora" id="id_unidade_gestora"
 							class="form-control">
 							<option value="">ESCOLHA A UNIDADE GESTORA</option>
-							<c:forEach items="${mbUnidade.getListaUnidadeGestora(2016)}"
+							<c:forEach items="${mbUnidade.getListaUnidadeGestora(null)}"
 								var="linha">
 								<option value="${linha.codUnidadeGestora}">${linha.descricaoUnidade}</option>
 							</c:forEach>
 						</select><br />
 					</div>
 				</div>
-				
-
 				<div class="row">
 					<div class="col-sm-2">
 						<br />

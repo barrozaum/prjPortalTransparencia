@@ -32,7 +32,7 @@
 					</thead>
 					<tbody>
 						<c:set var="Total" value="${0}" />
-						<c:forEach items="${mb_orcamento.getListaOrcamentoFonteRecurso()}"
+						<c:forEach items="${mb_orcamento.getListaOrcamentoDespesaFonteRecurso()}"
 							var="linha">
 							<c:set var="Total" value="${linha.valorTotalOrcado}" />
 							<tr>

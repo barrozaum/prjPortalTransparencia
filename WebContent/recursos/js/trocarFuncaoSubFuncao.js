@@ -1,6 +1,5 @@
 $(function() {
 	$(document).on('change', '#id_unidade_gestora', function(e) {
-
 		
 		var exercicio = $("#id_exercicio").val();
 		var unidadeGestora = $("#id_unidade_gestora").val();

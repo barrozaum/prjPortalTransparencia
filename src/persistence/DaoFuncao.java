@@ -21,7 +21,7 @@ public class DaoFuncao extends Dao {
 		rs = stmt.executeQuery();
 		while (rs.next()) {
 			Funcao f = new Funcao();
-			f.setCodigo(rs.getInt("CODIGO"));
+			f.setCodigo(rs.getString("CODIGO"));
 			f.setDescricao(rs.getString("DESCRICAO"));
 
 			listarFuncoes.add(f);

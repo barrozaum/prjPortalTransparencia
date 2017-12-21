@@ -2,7 +2,7 @@ package teste;
 
 import java.util.List;
 
-import entity.OrcamentoDespesaFonteRecurso;
+import dto.OrcamentoDespesaFonteRecurso;
 import persistence.DaoOrcamentoDespesaFonteRecurso;
 
 public class TesteOrcamentoDespesaFonteRecurso {

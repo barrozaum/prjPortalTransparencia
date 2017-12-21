@@ -6,16 +6,16 @@ public class Empenho {
 	private String dataEmpenho;
 	private String nomeCredor;
 	private String observacao;
-	private Double valorEmpenhado;
-	private Double valorLiquidado;
-	private Double valorPago;
+	private String valorEmpenhado;
+	private String valorLiquidado;
+	private String valorPago;
 
 	public Empenho() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Empenho(Integer numeroEmpenho, String dataEmpenho, String nomeCredor, String observacao,
-			Double valorEmpenhado, Double valorLiquidado, Double valorPago) {
+			String valorEmpenhado, String valorLiquidado, String valorPago) {
 		super();
 		this.numeroEmpenho = numeroEmpenho;
 		this.dataEmpenho = dataEmpenho;
@@ -58,27 +58,27 @@ public class Empenho {
 		this.observacao = observacao;
 	}
 
-	public Double getValorEmpenhado() {
+	public String getValorEmpenhado() {
 		return valorEmpenhado;
 	}
 
-	public void setValorEmpenhado(Double valorEmpenhado) {
+	public void setValorEmpenhado(String valorEmpenhado) {
 		this.valorEmpenhado = valorEmpenhado;
 	}
 
-	public Double getValorLiquidado() {
+	public String getValorLiquidado() {
 		return valorLiquidado;
 	}
 
-	public void setValorLiquidado(Double valorLiquidado) {
+	public void setValorLiquidado(String valorLiquidado) {
 		this.valorLiquidado = valorLiquidado;
 	}
 
-	public Double getValorPago() {
+	public String getValorPago() {
 		return valorPago;
 	}
 
-	public void setValorPago(Double valorPago) {
+	public void setValorPago(String valorPago) {
 		this.valorPago = valorPago;
 	}
 

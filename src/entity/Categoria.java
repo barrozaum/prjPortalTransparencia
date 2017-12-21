@@ -1,18 +1,12 @@
 package entity;
 
-public class Funcao {
+public class Categoria {
 
 	private String codigo;
 	private String descricao;
 
-	public Funcao() {
-		// TODO Auto-generated constructor stub
-	}
+	public Categoria() {
 
-	public Funcao(String codigo, String descricao) {
-		super();
-		this.codigo = codigo;
-		this.descricao = descricao;
 	}
 
 	public String getCodigo() {
@@ -24,7 +18,7 @@ public class Funcao {
 	}
 
 	public String getDescricao() {
-		return descricao.toUpperCase();
+		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
@@ -33,7 +27,7 @@ public class Funcao {
 
 	@Override
 	public String toString() {
-		return "Funcao [codigo=" + codigo + ", descricao=" + descricao + "]";
+		return "Categoria [codigo=" + codigo + ", descricao=" + descricao + "]";
 	}
 
 }

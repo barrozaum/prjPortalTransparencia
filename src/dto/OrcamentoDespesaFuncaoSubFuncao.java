@@ -1,4 +1,7 @@
-package entity;
+package dto;
+
+import entity.Funcao;
+import entity.SubFuncao;
 
 public class OrcamentoDespesaFuncaoSubFuncao {
 
