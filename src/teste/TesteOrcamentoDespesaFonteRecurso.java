@@ -11,7 +11,7 @@ public class TesteOrcamentoDespesaFonteRecurso {
 		try {
 			DaoOrcamentoDespesaFonteRecurso dao = new DaoOrcamentoDespesaFonteRecurso();
 			System.out.println("abrino");
-			List<OrcamentoDespesaFonteRecurso> lista = dao.findAll(2016, 0);
+			List<OrcamentoDespesaFonteRecurso> lista = dao.relatorioDespesaFonteRecurso(2016, 0);
 			for (OrcamentoDespesaFonteRecurso orcamento : lista) {
 				System.out.println("Cod => " + orcamento.getFonte().getCodigo() + ", nome"
 						+ orcamento.getFonte().getNome() + ", valor " + orcamento.getValorOrcado());

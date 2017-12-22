@@ -29,26 +29,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-12">
-						<label for="id_programa">PROGRAMA</label> <select
-							name="name_programa" id="id_programa" class="form-control">
-							<option value="">SELECIONE A UNIDADE GESTORA</option>
-						</select><br />
-					</div>
-				</div>
-                <div class="row">
-					<div class="col-sm-12">
-						<label for="id_acao">AÇÃO</label> <select
-							name="name_acao" id="id_acao" class="form-control">
-							<option value="">SELECIONE O PROGRAM</option>
-						</select><br />
-					</div>
-				</div>
-                
-                
-                <div class="row">
                     <div class="col-sm-2">
-                        <br /><button type="button" class="btn btn-success" id="btn_despesa_fonte_recurso">PESQUISAR <span class="glyphicon glyphicon-search"></span></button>
+                        <br /><button type="button" class="btn btn-success" id="btn_despesa_programa_atividade">PESQUISAR <span class="glyphicon glyphicon-search"></span></button>
                     </div>
                 </div>
             </div>
@@ -59,9 +41,4 @@
 
 <!-- JQUERY PRA LISTAR OS EXERCICIOS -->
 <script type="text/javascript" src="recursos/js/exercicioBase.js"></script>
-<script type="text/javascript" src="recursos/js/orcamento/orcamentoDespesaFuncaoSubFuncao.js"></script>
-<script type="text/javascript" src="recursos/js/trocarFuncaoSubFuncao.js"></script>
-
-
-
-
+<script type="text/javascript" src="recursos/js/orcamento/orcamentoDespesaProgramaAtividade.js"></script>

@@ -10,7 +10,7 @@ import entity.FonteRecurso;
 
 public class DaoOrcamentoDespesaFonteRecurso extends Dao {
 
-	public List<OrcamentoDespesaFonteRecurso> findAll(Integer exercicio, Integer unidadeGestora) throws Exception {
+	public List<OrcamentoDespesaFonteRecurso> relatorioDespesaFonteRecurso(Integer exercicio, Integer unidadeGestora) throws Exception {
 		List<OrcamentoDespesaFonteRecurso> lista = new ArrayList<>();
 		open(exercicio);
 		String sql = "SELECT f.CODIGO, f.DESCRICAO, SUM(DESPESA_FIXADA) as VALOR_ORCADO ";

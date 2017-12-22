@@ -8,19 +8,8 @@
 	} else {
 		Integer exercicio = new Integer(request.getParameter("exercicio"));
 		Integer codigoUnidadeGestora = new Integer(request.getParameter("codigoUnidadeGestora"));
-		Integer codigoFuncao = 0;
-		Integer codigoSubFuncao = 0;
 
-		if (!request.getParameter("codigoFuncao").equals("")) {
-			codigoFuncao = new Integer(request.getParameter("codigoFuncao"));
-		}
-
-		if (!request.getParameter("codigoSubFuncao").equals("")) {
-			codigoSubFuncao = new Integer(request.getParameter("codigoSubFuncao"));
-		}
-
-		mb_orcamento.pesquisaOrcamentoDespesaFuncaoSubFuncao(exercicio, codigoUnidadeGestora, codigoFuncao,
-				codigoSubFuncao);
+		mb_orcamento.pesquisaOrcamentoDespesaProgramaAtividade(exercicio, codigoUnidadeGestora);
 %>
 
 
@@ -29,39 +18,36 @@
 		<div class="panel-heading">
 			<div class="panel-title">Orçamento</div>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body text-left">
 			<div style="overflow: auto; max-width: 100%;">
 
 				<table id="example" class="table table-hover table-striped">
 					<thead>
 						<tr>
-							<th>EXERCICIO</th>
-							<th>COD. FUNÇÃO</th>
-							<th>DESC. FUNÇÃO</th>
-							<th>COD. SUBFUNÇÃO</th>
-							<th>DESC. SUBFUNÇÃO</th>
-							<th>VALOR ORÇADO</th>
+							<th>CODIGO</th>
+							<th>PROGRAMA</th>
+							<th>CODIGO</th>
+							<th>ATIVIDADE</th>
+							<th>VALOR</th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:set var="Total" value="${0}" />
-						<c:forEach
-							items="${mb_orcamento.getListaOrcamentoDespesaFuncaoSubFuncao()}"
+						<c:set var="Total" value="${0}" />
+						<c:forEach items="${mb_orcamento.getListaOrcamentoDespesaProgramaAtividade()}"
 							var="linha">
-							<c:set var="Total" value="${linha.valorTotalOrcado}" />
+							<c:set var="Total" value="${linha.valorOrcado}" />
 							<tr>
-								<td>${linha.exercicioOrcamento}</td>
-								<td>${linha.funcao.codigo}</td>
-								<td>${linha.funcao.descricao}</td>
-								<td>${linha.subFuncao.codigo}</td>
-								<td>${linha.subFuncao.descricao}</td>
-								<td>${linha.valor}</td>
+								<td>${linha.programa.codigo}</td>
+								<td>${linha.programa.descricao}</td>
+								<td>${linha.atividade.codigo}</td>
+								<td>${linha.atividade.descricao}</td>
+								<td class="text-justify text-right ">${linha.valorOrcado}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 					<tfoot>
 						<tr>
-							<th colspan="4">Total</th>
+							<th colspan="3">Total</th>
 							<th colspan="2" class="text-right">${Total}</th>
 						</tr>
 					</tfoot>
@@ -74,3 +60,4 @@
 <%
 	}
 %>
+

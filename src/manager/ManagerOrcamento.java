@@ -6,21 +6,28 @@ import java.util.List;
 import dto.OrcamentoDespesaFonteRecurso;
 import dto.OrcamentoDespesaFuncaoSubFuncao;
 import dto.OrcamentoDespesaGrupoDespesa;
+import dto.OrcamentoDespesaProgramaAtividade;
 import entity.Empenho;
 import persistence.Dao;
 import persistence.DaoEmpenho;
 import persistence.DaoOrcamentoDespesaFonteRecurso;
 import persistence.DaoOrcamentoDespesaFuncaoSubFuncao;
 import persistence.DaoOrcamentoDespesaGrupoDespesa;
+import persistence.DaoOrcamentoDespesaProgramaAtividade;
 
 public class ManagerOrcamento {
 
 	private OrcamentoDespesaFuncaoSubFuncao orcamentoDespesaFuncaoSubFuncao;
 	private List<OrcamentoDespesaFuncaoSubFuncao> listaOrcamentoDespesaFuncaoSubFuncao;
+	
 	private OrcamentoDespesaFonteRecurso orcamentoFonteRecurso;
 	private List<OrcamentoDespesaFonteRecurso> listaOrcamentoDespesaFonteRecurso;
+
 	private OrcamentoDespesaGrupoDespesa orcamentoDespesaGrupoDespesa;
 	private List<OrcamentoDespesaGrupoDespesa> listaOrcamentoDespesaGrupoDespesa;
+	
+	private OrcamentoDespesaProgramaAtividade orcamentoDespesaProgramaAtividade;
+	private List<OrcamentoDespesaProgramaAtividade> listaOrcamentoDespesaProgramaAtividade;
 
 	public ManagerOrcamento() {
 		listaOrcamentoDespesaFuncaoSubFuncao = new ArrayList<OrcamentoDespesaFuncaoSubFuncao>();
@@ -79,6 +86,23 @@ public class ManagerOrcamento {
 			List<OrcamentoDespesaGrupoDespesa> listaOrcamentoDespesaGrupoDespesa) {
 		this.listaOrcamentoDespesaGrupoDespesa = listaOrcamentoDespesaGrupoDespesa;
 	}
+	
+	public OrcamentoDespesaProgramaAtividade getOrcamentoDespesaProgramaAtividade() {
+		return orcamentoDespesaProgramaAtividade;
+	}
+
+	public void setOrcamentoDespesaProgramaAtividade(OrcamentoDespesaProgramaAtividade orcamentoDespesaProgramaAtividade) {
+		this.orcamentoDespesaProgramaAtividade = orcamentoDespesaProgramaAtividade;
+	}
+
+	public List<OrcamentoDespesaProgramaAtividade> getListaOrcamentoDespesaProgramaAtividade() {
+		return listaOrcamentoDespesaProgramaAtividade;
+	}
+
+	public void setListaOrcamentoDespesaProgramaAtividade(
+			List<OrcamentoDespesaProgramaAtividade> listaOrcamentoDespesaProgramaAtividade) {
+		this.listaOrcamentoDespesaProgramaAtividade = listaOrcamentoDespesaProgramaAtividade;
+	}
 
 	public List<OrcamentoDespesaFuncaoSubFuncao> pesquisaOrcamentoDespesaFuncaoSubFuncao(Integer exercicio,
 			Integer unidadeGestora, Integer codigoFuncao, Integer codigoSubFuncao) {
@@ -94,8 +118,8 @@ public class ManagerOrcamento {
 	public List<OrcamentoDespesaFuncaoSubFuncao> pesquisaOrcamentoDespesaFonteRecurso(Integer exercicio,
 			Integer unidadeGestora) {
 		try {
-			listaOrcamentoDespesaFonteRecurso = new DaoOrcamentoDespesaFonteRecurso().findAll(exercicio,
-					unidadeGestora);
+			listaOrcamentoDespesaFonteRecurso = new DaoOrcamentoDespesaFonteRecurso().relatorioDespesaFonteRecurso(exercicio, unidadeGestora);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,6 +127,7 @@ public class ManagerOrcamento {
 		return listaOrcamentoDespesaFuncaoSubFuncao;
 	}
 
+	
 	public List<OrcamentoDespesaGrupoDespesa> pesquisaOrcamentoDespesaGrupoDespesa(Integer exercicio,
 			Integer unidadeGestora) {
 		try {
@@ -135,4 +160,16 @@ public class ManagerOrcamento {
 		}
 		return "";
 	}
+	
+	
+	public List<OrcamentoDespesaProgramaAtividade> pesquisaOrcamentoDespesaProgramaAtividade(Integer exercicio,
+			Integer unidadeGestora) {
+		try {
+			listaOrcamentoDespesaProgramaAtividade = new DaoOrcamentoDespesaProgramaAtividade().relatorioDespesaProgramaAtividade(exercicio, unidadeGestora);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaOrcamentoDespesaProgramaAtividade;
+	}
+
 }
