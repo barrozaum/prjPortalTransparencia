@@ -9,7 +9,7 @@
 		Integer exercicio = new Integer(request.getParameter("exercicio"));
 		Integer codigoUnidadeGestora = new Integer(request.getParameter("codigoUnidadeGestora"));
 
-		mb_orcamento.pesquisaOrcamentoDespesaFonteRecurso(exercicio, codigoUnidadeGestora);
+		mb_orcamento.pesquisaOrcamentoDespesaUnidadeOrcamentaria(exercicio, codigoUnidadeGestora);
 %>
 
 
@@ -23,28 +23,32 @@
 				<thead>
 					<tr>
 						<th>EXERCICIO</th>
-						<th>COD. RECURSO</th>
-						<th>NOME RECURSOS</th>
+						<th>CODIGO</th>
+						<th>UNIDADE EXECUTORA</th>
+						<th>CODIGO</th>
+						<th>UNIDADE ORCAMENTARIA</th>
 						<th>VALOR ORÇADO</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:set var="Total" value="${0}" />
 					<c:forEach
-						items="${mb_orcamento.getListaOrcamentoDespesaFonteRecurso()}"
+						items="${mb_orcamento.getListaOrcamentoDespesaUnidadeOrcamentaria()}"
 						var="linha">
 						<c:set var="Total" value="${linha.valorTotalOrcado}" />
 						<tr>
 							<td>${linha.exercicioOrcamento}</td>
-							<td>${linha.fonte.codigo}</td>
-							<td>${linha.fonte.nome}</td>
+							<td>${linha.unidadeExecutora.codigo}</td>
+							<td>${linha.unidadeExecutora.descricao}</td>
+							<td>${linha.unidadeOrcamentaria.codigo}</td>
+							<td>${linha.unidadeOrcamentaria.descricao}</td>
 							<td><strong>${linha.valorOrcado}</strong></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="2">Total</th>
+						<th colspan="4">Total</th>
 						<th colspan="2" class="text-right">${Total}</th>
 					</tr>
 				</tfoot>

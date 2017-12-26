@@ -7,7 +7,7 @@ public class OrcamentoDespesaProgramaAtividade {
 	private Integer exercicioOrcamento;
 	private Programa programa;
 	private Atividade atividade;
-	private String valorOrcado;
+	private transient String valorOrcado;
 
 	public OrcamentoDespesaProgramaAtividade() {
 

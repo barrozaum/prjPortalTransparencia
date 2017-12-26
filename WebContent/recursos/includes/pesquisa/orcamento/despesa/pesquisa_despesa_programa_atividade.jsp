@@ -41,7 +41,7 @@
 								<td>${linha.programa.descricao}</td>
 								<td>${linha.atividade.codigo}</td>
 								<td>${linha.atividade.descricao}</td>
-								<td class="text-justify text-right ">${linha.valorOrcado}</td>
+								<td><strong>${linha.valorOrcado}</strong></td>
 							</tr>
 						</c:forEach>
 					</tbody>

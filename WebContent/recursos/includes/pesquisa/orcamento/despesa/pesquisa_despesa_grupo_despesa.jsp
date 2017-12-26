@@ -83,7 +83,7 @@
 									<tr>
 										<td>${linha.categoria.codigo}</td>
 										<td>${linha.categoria.descricao}</td>
-										<td>${mb_orcamento.valorPorNivel(1,linha)}</td>
+										<td><strong>${mb_orcamento.valorPorNivel(1,linha)}</strong></td>
 										<c:set var="CODIGO_BASE_CATEGORIA"
 											value="${linha.categoria.codigo}" />
 									</tr>
@@ -94,7 +94,7 @@
 									<tr>
 										<td>${linha.natureza.codigo}</td>
 										<td>&nbsp;&nbsp;${linha.natureza.descricao}</td>
-										<td>${mb_orcamento.valorPorNivel(2,linha)}</td>
+										<td><strong>${mb_orcamento.valorPorNivel(2,linha)}</strong></td>
 										<c:set var="CODIGO_BASE_NATUREZA"
 											value="${linha.natureza.codigo}" />
 									</tr>
@@ -105,7 +105,7 @@
 									<tr>
 										<td>${linha.modalidade.codigo}</td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;${linha.modalidade.descricao}</td>
-										<td>${mb_orcamento.valorPorNivel(3,linha)}</td>
+										<td><strong>${mb_orcamento.valorPorNivel(3,linha)}</strong></td>
 										<c:set var="CODIGO_BASE_MODALIDADE"
 											value="${linha.modalidade.codigo}" />
 									</tr>
@@ -116,7 +116,7 @@
 									<tr>
 										<td>${linha.elemento.codigo}</td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${linha.elemento.descricao}</td>
-										<td>${mb_orcamento.valorPorNivel(4,linha)}</td>
+										<td><strong>${mb_orcamento.valorPorNivel(4,linha)}</strong></td>
 										<c:set var="CODIGO_BASE_ELEMENTO"
 											value="${linha.elemento.codigo}" />
 									</tr>

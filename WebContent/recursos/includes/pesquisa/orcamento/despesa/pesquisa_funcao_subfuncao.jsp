@@ -29,9 +29,7 @@
 		<div class="panel-heading">
 			<div class="panel-title">Orçamento</div>
 		</div>
-		<div class="panel-body">
-			<div style="overflow: auto; max-width: 100%;">
-
+		<div class="panel-body text-left">
 				<table id="example" class="table table-hover table-striped">
 					<thead>
 						<tr>
@@ -55,7 +53,7 @@
 								<td>${linha.funcao.descricao}</td>
 								<td>${linha.subFuncao.codigo}</td>
 								<td>${linha.subFuncao.descricao}</td>
-								<td>${linha.valor}</td>
+								<td><strong>${linha.valor}</strong></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -66,7 +64,7 @@
 						</tr>
 					</tfoot>
 				</table>
-			</div>
+			
 		</div>
 	</div>
 </div>
