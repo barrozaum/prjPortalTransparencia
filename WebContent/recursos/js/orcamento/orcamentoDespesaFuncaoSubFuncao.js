@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
 	$(document)
 			.on(
 					"click",
@@ -38,7 +38,6 @@ $(function(){
 					});
 });
 
-
 function limpando_unidade_gestora() {
 
 	$('#msg_erro').html('');
@@ -48,10 +47,7 @@ function limpando_unidade_gestora() {
 	$('#id_funcao').empty();
 	$('#id_funcao').html("<option value=''>SELECIONE UNIDADE GESTORA</option>");
 
-
 }
-
-
 
 function limpando_funcao() {
 	$('#msg_erro').html('');
@@ -62,9 +58,8 @@ function limpando_funcao() {
 	$('#id_sub_funcao').html("<option value=''>SELECIONE A FUNÇÃO</option>");
 }
 
-
-function function_pesquisas_orcamento_despesa_subfuncao(exercicio, codigoUnidadeGestora,
-		codigoFuncao, codigoSubFuncao) {
+function function_pesquisas_orcamento_despesa_subfuncao(exercicio,
+		codigoUnidadeGestora, codigoFuncao, codigoSubFuncao) {
 
 	$
 			.ajax({
@@ -78,10 +73,57 @@ function function_pesquisas_orcamento_despesa_subfuncao(exercicio, codigoUnidade
 				},
 				success : function(sucesso) {
 					$("#listar").html(sucesso);
-					$('#example').DataTable({
-						dom : 'Bfrtip',
-						buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
-					});
+					$('#example')
+							.DataTable(
+									{
+										responsive : true,
+										dom : 'Bfrtip',
+										buttons : [
+												'copy',
+												{
+													extend : 'print',
+													title : 'ORCAMENTO-DESPESA-FUNCAO-SUBFUNCAO_'
+															+ exercicio,
+													messageTop : 'Unidade Gestora '
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
+													footer : true
+												},
+
+												{
+													extend : 'excel',
+													title : 'ORCAMENTO-DESPESA-FUNCAO-SUBFUN_'
+															+ exercicio,
+													messageTop : 'Unidade Gestora '
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
+													footer : true
+												},
+												{
+													extend : 'csv',
+													title : 'ORCAMENTO-DESPESA-FUNCAO-SUBFUNCAO_'
+															+ exercicio,
+													messageTop : 'Unidade Gestora '
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
+													footer : true
+
+												},
+												{
+													extend : 'pdfHtml5',
+													title : 'ORCAMENTO-DESPESA-FUNCAO-SUBFUNCAO_'
+															+ exercicio,
+													messageTop : 'Unidade Gestora '
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
+													footer : true
+												} ]
+
+									});
 				},
 				error : function(erro) {
 					$("#listar").html(erro);

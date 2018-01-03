@@ -27,6 +27,7 @@ public class DaoOrcamentoDespesaFonteRecurso extends Dao {
 		Double valorTotalCalculado = 0.;
 		while (rs.next()) {
 			odfr = new OrcamentoDespesaFonteRecurso();
+			odfr.setUnidadeGestora(new DaoUnidadeGestora().findByCode(exercicio, unidadeGestora));
 			FonteRecurso fr = new FonteRecurso();
 			fr.setCodigo(rs.getString("CODIGO"));
 			fr.setNome(rs.getString("DESCRICAO"));

@@ -63,7 +63,7 @@
 	function estruturaPagina() {
 		$('#formulario')
 				.load(
-						'recursos/includes/formulario/orcamento/despesa/formulario_despesa_fontes_recursos.jsp');
+						'recursos/includes/formulario/orcamento/receita/formulario_receita.jsp');
 		$('#menu_lateral').load(
 				'recursos/includes/menu/menu_lateral_orcamento.jsp');
 		$('#modal').load('recursos/includes/estrutura/modal_grande.html');

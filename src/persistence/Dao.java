@@ -13,7 +13,7 @@ public class Dao {
 
 	public void open(Integer exercicio) throws Exception {
 		String dataBaseName = null;
-		if (exercicio == null) { //null representa o ano corrente 
+		if (exercicio == null) { // null representa o ano corrente
 			dataBaseName = "NCASP_PREFJAPERI16_CONSOLIDADO";
 		} else if (exercicio == 2016) {
 			dataBaseName = "NCASP_PREFJAPERI16_CONSOLIDADO";
@@ -21,7 +21,8 @@ public class Dao {
 			dataBaseName = "NCASP_PrefJaperi15";
 		}
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=" + dataBaseName, "sa", "123");
+		con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=" + dataBaseName, "sa",
+				"123");
 
 	}
 

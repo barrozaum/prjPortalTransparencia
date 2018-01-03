@@ -19,7 +19,19 @@
 						<div id="select_exercicio"></div>
 					</div>
 				</div>
-
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="id_nivel_grupo">Nível do Grupo</label> <select
+							name="name_nivel_grupo" id="id_nivel_grupo" class="form-control">
+							<option value="">SELECIONE O NÍVEL</option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+						</select><br />
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<label for="id_unidade_gestora">UNIDADE GESTORA</label> <select
@@ -33,7 +45,7 @@
 						</select><br />
 					</div>
 				</div>
-				
+
 
 
 				<div class="row">
@@ -53,7 +65,8 @@
 
 <!-- JQUERY PRA LISTAR OS EXERCICIOS -->
 <script type="text/javascript" src="recursos/js/exercicioBase.js"></script>
-<script type="text/javascript" src="recursos/js/orcamento/orcamentoDespesaGrupoDespesa.js"></script>
+<script type="text/javascript"
+	src="recursos/js/orcamento/orcamentoDespesaGrupoDespesa.js"></script>
 
 
 

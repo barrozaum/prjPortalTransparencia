@@ -10,6 +10,12 @@
 		Integer codigoUnidadeGestora = new Integer(request.getParameter("codigoUnidadeGestora"));
 
 		mb_orcamento.pesquisaOrcamentoDespesaProgramaAtividade(exercicio, codigoUnidadeGestora);
+		Integer exercicioEscolhida = 0;
+		String unidaGestoraEscolhida = "Nenhum Resultado Localizado";
+		if (mb_orcamento.getOrcamentoDespesaProgramaAtividade() != null) {
+			exercicioEscolhida = mb_orcamento.getOrcamentoDespesaProgramaAtividade().getExercicioOrcamento();
+			unidaGestoraEscolhida = mb_orcamento.getOrcamentoDespesaProgramaAtividade().getUnidadeGestora().getDescricaoUnidade();
+		}
 %>
 
 
@@ -23,6 +29,22 @@
 
 				<table id="example" class="table table-hover table-striped">
 					<thead>
+					<tr>
+						<th colspan="2">EXERCICIO</th>
+						<th colspan="3">
+							<%
+								out.print(exercicioEscolhida);
+							%>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="2">Unidade Gestora</th>
+						<th colspan="3"><input type="hidden"
+							id="id_descricao_unidade_gestora"
+							value="<%out.print(unidaGestoraEscolhida);%>"> 
+							<% out.print(unidaGestoraEscolhida);%>
+						</th>
+					</tr>
 						<tr>
 							<th>CODIGO</th>
 							<th>PROGRAMA</th>

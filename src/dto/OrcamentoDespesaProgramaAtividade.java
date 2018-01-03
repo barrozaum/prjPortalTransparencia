@@ -2,9 +2,11 @@ package dto;
 
 import entity.Atividade;
 import entity.Programa;
+import entity.UnidadeGestora;
 
 public class OrcamentoDespesaProgramaAtividade {
 	private Integer exercicioOrcamento;
+	private UnidadeGestora unidadeGestora;
 	private Programa programa;
 	private Atividade atividade;
 	private transient String valorOrcado;
@@ -13,10 +15,11 @@ public class OrcamentoDespesaProgramaAtividade {
 
 	}
 
-	public OrcamentoDespesaProgramaAtividade(Integer exercicioOrcamento, Programa programa, Atividade atividade,
-			String valorOrcado) {
+	public OrcamentoDespesaProgramaAtividade(Integer exercicioOrcamento, UnidadeGestora unidadeGestora,
+			Programa programa, Atividade atividade, String valorOrcado) {
 		super();
 		this.exercicioOrcamento = exercicioOrcamento;
+		this.unidadeGestora = unidadeGestora;
 		this.programa = programa;
 		this.atividade = atividade;
 		this.valorOrcado = valorOrcado;
@@ -54,10 +57,20 @@ public class OrcamentoDespesaProgramaAtividade {
 		this.valorOrcado = valorOrcado;
 	}
 
+	public UnidadeGestora getUnidadeGestora() {
+		return unidadeGestora;
+	}
+
+	public void setUnidadeGestora(UnidadeGestora unidadeGestora) {
+		this.unidadeGestora = unidadeGestora;
+	}
+
 	@Override
 	public String toString() {
-		return "OrcamentoDespesaProgramaAtividade [exercicioOrcamento=" + exercicioOrcamento + ", programa=" + programa
-				+ ", atividade=" + atividade + ", valorOrcado=" + valorOrcado + "]";
+		return "OrcamentoDespesaProgramaAtividade [exercicioOrcamento=" + exercicioOrcamento + ", unidadeGestora="
+				+ unidadeGestora + ", programa=" + programa + ", atividade=" + atividade + ", valorOrcado="
+				+ valorOrcado + "]";
 	}
+
 
 }

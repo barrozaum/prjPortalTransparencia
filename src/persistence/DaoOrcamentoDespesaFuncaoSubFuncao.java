@@ -57,6 +57,7 @@ public class DaoOrcamentoDespesaFuncaoSubFuncao extends Dao {
 		Double valorTotalCalculado = 0.;
 		while (rs.next()) {
 			odfs = new OrcamentoDespesaFuncaoSubFuncao();
+			odfs.setUnidadeGestora(new DaoUnidadeGestora().findByCode(exercicio, unidadeGestora));
 			Funcao funcao = new Funcao();
 			SubFuncao sb = new SubFuncao();
 			funcao.setCodigo(rs.getString("codigoFuncao"));

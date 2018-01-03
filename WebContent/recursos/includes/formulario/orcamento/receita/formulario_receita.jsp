@@ -16,8 +16,8 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<label for="id_exercicio">Nível da Conta</label> <select
-							name="name_exercicio" id="id_exercicio" class="form-control">
+						<label for="id_nivel_conta">Nível da Conta</label> <select
+							name="name_nivel_conta" id="id_nivel_conta" class="form-control">
 							<option value="">SELECIONE O NÍVEL</option>
 							<option value="01">01</option>
 							<option value="02">02</option>
@@ -48,7 +48,7 @@
 					<div class="col-sm-2">
 						<br />
 						<button type="button" class="btn btn-success"
-							id="btn_despesa_fonte_recurso">
+							id="btn_orcamento_receita">
 							PESQUISAR <span class="glyphicon glyphicon-search"></span>
 						</button>
 					</div>
@@ -61,3 +61,4 @@
 
 <!-- JQUERY PRA LISTAR OS EXERCICIOS -->
 <script type="text/javascript" src="recursos/js/exercicioBase.js"></script>	
+<script type="text/javascript" src="recursos/js/orcamento/orcamentoReceita.js"></script>	

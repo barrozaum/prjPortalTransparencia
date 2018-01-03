@@ -1,12 +1,14 @@
 package dto;
 
 import entity.UnidadeExecutora;
+import entity.UnidadeGestora;
 import entity.UnidadeOrcamentaria;
 
 public class OrcamentoDespesaUnidadeOrcamentaria {
 
 	private Integer exercicioOrcamento;
 	private String valorOrcado;
+	private UnidadeGestora unidadeGestora;
 	private UnidadeExecutora unidadeExecutora;
 	private UnidadeOrcamentaria unidadeOrcamentaria;
 	private transient String valorTotalOrcado;
@@ -16,10 +18,12 @@ public class OrcamentoDespesaUnidadeOrcamentaria {
 	}
 
 	public OrcamentoDespesaUnidadeOrcamentaria(Integer exercicioOrcamento, String valorOrcado,
-			UnidadeExecutora unidadeExecutora, UnidadeOrcamentaria unidadeOrcamentaria, String valorTotalOrcado) {
+			UnidadeGestora unidadeGestora, UnidadeExecutora unidadeExecutora, UnidadeOrcamentaria unidadeOrcamentaria,
+			String valorTotalOrcado) {
 		super();
 		this.exercicioOrcamento = exercicioOrcamento;
 		this.valorOrcado = valorOrcado;
+		this.unidadeGestora = unidadeGestora;
 		this.unidadeExecutora = unidadeExecutora;
 		this.unidadeOrcamentaria = unidadeOrcamentaria;
 		this.valorTotalOrcado = valorTotalOrcado;
@@ -65,11 +69,19 @@ public class OrcamentoDespesaUnidadeOrcamentaria {
 		this.valorTotalOrcado = valorTotalOrcado;
 	}
 
+	public UnidadeGestora getUnidadeGestora() {
+		return unidadeGestora;
+	}
+
+	public void setUnidadeGestora(UnidadeGestora unidadeGestora) {
+		this.unidadeGestora = unidadeGestora;
+	}
+
 	@Override
 	public String toString() {
 		return "OrcamentoDespesaUnidadeOrcamentaria [exercicioOrcamento=" + exercicioOrcamento + ", valorOrcado="
-				+ valorOrcado + ", unidadeExecutora=" + unidadeExecutora + ", unidadeOrcamentaria="
-				+ unidadeOrcamentaria + "]";
+				+ valorOrcado + ", unidadeGestora=" + unidadeGestora + ", unidadeExecutora=" + unidadeExecutora
+				+ ", unidadeOrcamentaria=" + unidadeOrcamentaria + ", valorTotalOrcado=" + valorTotalOrcado + "]";
 	}
 
 }

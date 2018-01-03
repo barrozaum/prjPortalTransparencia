@@ -10,6 +10,12 @@
 		Integer codigoUnidadeGestora = new Integer(request.getParameter("codigoUnidadeGestora"));
 
 		mb_orcamento.pesquisaOrcamentoDespesaFonteRecurso(exercicio, codigoUnidadeGestora);
+		Integer exercicioEscolhida = 0;
+		String unidaGestoraEscolhida = "Nenhum Resultado Localizado";
+		if (mb_orcamento.getOrcamentoFonteRecurso() != null) {
+			exercicioEscolhida = mb_orcamento.getOrcamentoFonteRecurso().getExercicioOrcamento();
+			unidaGestoraEscolhida = mb_orcamento.getOrcamentoFonteRecurso().getUnidadeGestora().getDescricaoUnidade();
+		}
 %>
 
 
@@ -22,7 +28,21 @@
 			<table id="example" class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>EXERCICIO</th>
+						<th colspan="1">EXERCICIO</th>
+						<th colspan="3">
+							<%
+								out.print(exercicioEscolhida);
+							%>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="1">Unidade Gestora</th>
+						<th colspan="3"><input type="hidden"
+							id="id_descricao_unidade_gestora"
+							value="<%out.print(unidaGestoraEscolhida);%>"> <% out.print(unidaGestoraEscolhida);%>
+						</th>
+					</tr>
+					<tr>
 						<th>COD. RECURSO</th>
 						<th>NOME RECURSOS</th>
 						<th>VALOR ORÇADO</th>
@@ -35,7 +55,6 @@
 						var="linha">
 						<c:set var="Total" value="${linha.valorTotalOrcado}" />
 						<tr>
-							<td>${linha.exercicioOrcamento}</td>
 							<td>${linha.fonte.codigo}</td>
 							<td>${linha.fonte.nome}</td>
 							<td><strong>${linha.valorOrcado}</strong></td>

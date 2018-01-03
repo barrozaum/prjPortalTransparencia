@@ -32,6 +32,7 @@ public class DaoOrcamentoDespesaProgramaAtividade extends Dao{
 		while(rs.next()) {
 			
 			odpa = new OrcamentoDespesaProgramaAtividade();
+			odpa.setUnidadeGestora(new DaoUnidadeGestora().findByCode(exercicio, unidadeGestora));
 			Programa programa = new Programa();
 			programa.setCodigo(rs.getString("codigo_programa"));
 			programa.setDescricao(rs.getString("descricao_programa"));

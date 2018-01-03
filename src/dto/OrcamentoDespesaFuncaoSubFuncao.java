@@ -2,26 +2,30 @@ package dto;
 
 import entity.Funcao;
 import entity.SubFuncao;
+import entity.UnidadeGestora;
 
 public class OrcamentoDespesaFuncaoSubFuncao {
 
 	private Integer exercicioOrcamento;
+	private UnidadeGestora unidadeGestora;
 	private Funcao funcao;
 	private SubFuncao subFuncao;
 	private String valor;
 	private transient String valorTotalOrcado;
 
 	public OrcamentoDespesaFuncaoSubFuncao() {
-		
+
 	}
-	
-	public OrcamentoDespesaFuncaoSubFuncao(Integer exercicioOrcamento, Funcao funcao, SubFuncao subFuncao,
-			String valor) {
+
+	public OrcamentoDespesaFuncaoSubFuncao(Integer exercicioOrcamento, UnidadeGestora unidadeGestora, Funcao funcao,
+			SubFuncao subFuncao, String valor, String valorTotalOrcado) {
 		super();
 		this.exercicioOrcamento = exercicioOrcamento;
+		this.unidadeGestora = unidadeGestora;
 		this.funcao = funcao;
 		this.subFuncao = subFuncao;
 		this.valor = valor;
+		this.valorTotalOrcado = valorTotalOrcado;
 	}
 
 	public Integer getExercicioOrcamento() {
@@ -56,7 +60,6 @@ public class OrcamentoDespesaFuncaoSubFuncao {
 		this.valor = valor;
 	}
 
-	
 	public String getValorTotalOrcado() {
 		return valorTotalOrcado;
 	}
@@ -65,12 +68,19 @@ public class OrcamentoDespesaFuncaoSubFuncao {
 		this.valorTotalOrcado = valorTotalOrcado;
 	}
 
-	@Override
-	public String toString() {
-		return "OrcamentoDespesaFuncaoSubFuncao [exercicioOrcamento=" + exercicioOrcamento + ", funcao=" + funcao
-				+ ", subFuncao=" + subFuncao + ", valor=" + valor + "]";
+	public UnidadeGestora getUnidadeGestora() {
+		return unidadeGestora;
 	}
 
-	
+	public void setUnidadeGestora(UnidadeGestora unidadeGestora) {
+		this.unidadeGestora = unidadeGestora;
+	}
+
+	@Override
+	public String toString() {
+		return "OrcamentoDespesaFuncaoSubFuncao [exercicioOrcamento=" + exercicioOrcamento + ", unidadeGestora="
+				+ unidadeGestora + ", funcao=" + funcao + ", subFuncao=" + subFuncao + ", valor=" + valor
+				+ ", valorTotalOrcado=" + valorTotalOrcado + "]";
+	}
 
 }

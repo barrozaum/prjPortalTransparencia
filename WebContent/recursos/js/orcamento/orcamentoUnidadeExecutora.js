@@ -66,36 +66,36 @@ function function_pesquisas_orcamento_despesa_unidade_orcamentaria(exercicio,
 												'copy',
 												{
 													extend : 'print',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-UNIDADE-EXECUTORA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+ codigoUnidadeGestora,
+															+ $('#id_descricao_unidade_gestora').val(),
 													footer : true
 												},
 
 												{
 													extend : 'excel',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-UNIDADE-EXECUTORA_'
 															+ exercicio,
-													messageTop : 'Unidade Gestora ADSADASD'
-															+ codigoUnidadeGestora,
+													messageTop : 'Unidade Gestora '
+															+ $('#id_descricao_unidade_gestora').val(),
 													footer : true
 												},
 												{
 													extend : 'csv',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-UNIDADE-EXECUTORA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+ codigoUnidadeGestora,
+															+ $('#id_descricao_unidade_gestora').val(),
 													footer : true
 
 												},
 												{
 													extend : 'pdfHtml5',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-UNIDADE-EXECUTORA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+ codigoUnidadeGestora,
+															+ $('#id_descricao_unidade_gestora').val(),
 													footer : true
 												} ]
 

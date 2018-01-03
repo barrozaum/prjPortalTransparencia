@@ -27,11 +27,30 @@ public class ControleAdicionarMascara {
 		return mascara;
 	}
 
+	public static String addZeroPeloTamanho(Integer tamanhoCampo, String numero) {
+		String mascara = numero;
+
+		// descobrindo o total de zero
+		Integer totalZero = tamanhoCampo - numero.length();
+		String zeroDireita = "";
+		for (int i = 0; i < totalZero; i++) {
+			zeroDireita += "0";
+		}
+		mascara = mascara + zeroDireita;
+
+		return mascara;
+	}
+
 	public static String addPontos(String mascara, String numero) {
 		String formatado = "";
 		if (mascara.equals("grupo_despesa")) {
 			formatado = numero.substring(0, 1) + "." + numero.substring(1, 2) + "." + numero.substring(2, 4) + "."
 					+ numero.substring(4, 6) + "." + numero.substring(6, 8);
+		}
+
+		if (mascara.equals("receita_prevista")) {
+			formatado = numero.substring(0, 4) + "." + numero.substring(4, 6) + "." + numero.substring(6, 8) + "."
+					+ numero.substring(8, 10);
 		}
 
 		return formatado;
@@ -49,21 +68,33 @@ public class ControleAdicionarMascara {
 
 	public static String formataDataReal(String valor) {
 		String valorFormatado = "";
-		
-		Locale meuLocal = new Locale( "pt", "BR" ); 
-        NumberFormat nfVal = NumberFormat.getCurrencyInstance( meuLocal ); 
-        double teste = new Double(valor);
-        valorFormatado = nfVal.format(teste);
-        
-        
+
+		Locale meuLocal = new Locale("pt", "BR");
+		NumberFormat nfVal = NumberFormat.getCurrencyInstance(meuLocal);
+		double teste = new Double(valor);
+		valorFormatado = nfVal.format(teste);
+
 		return valorFormatado;
 	}
-	
+
+	public static Double formataDinheiroCalculo(String valor) {
+		String modificado = "";
+
+		// limpando as strings
+		modificado = valor.replace("R$", "");
+		modificado = modificado.replace(".", "");
+		modificado = modificado.replace(",", ".");
+
+		double valorFormatado;
+		valorFormatado = new Double(modificado);
+		return valorFormatado;
+	}
+
 	public static String retirarPontos(String valor) {
 		String novoValor = "";
 		novoValor = valor.replace(".", "");
 		return novoValor;
-				
+
 	}
 
 }

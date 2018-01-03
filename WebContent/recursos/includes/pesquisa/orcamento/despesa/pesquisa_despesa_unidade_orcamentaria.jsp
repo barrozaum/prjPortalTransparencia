@@ -10,6 +10,14 @@
 		Integer codigoUnidadeGestora = new Integer(request.getParameter("codigoUnidadeGestora"));
 
 		mb_orcamento.pesquisaOrcamentoDespesaUnidadeOrcamentaria(exercicio, codigoUnidadeGestora);
+		Integer exercicioEscolhida = 0;
+		String unidaGestoraEscolhida = "Nenhum Resultado Localizado";
+		
+		if (mb_orcamento.getOrcamentoDespesaUnidadeOrcamentaria() != null) {
+			exercicioEscolhida = mb_orcamento.getOrcamentoDespesaUnidadeOrcamentaria().getExercicioOrcamento();
+			unidaGestoraEscolhida = mb_orcamento.getOrcamentoDespesaUnidadeOrcamentaria().getUnidadeGestora()
+					.getDescricaoUnidade();
+		}
 %>
 
 
@@ -22,7 +30,22 @@
 			<table id="example" class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>EXERCICIO</th>
+						<th colspan="2">EXERCICIO</th>
+						<th colspan="3">
+							<%
+								out.print(exercicioEscolhida);
+							%>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="2">Unidade Gestora</th>
+						<th colspan="3"><input type="hidden"
+							id="id_descricao_unidade_gestora"
+							value="<%out.print(unidaGestoraEscolhida);%>"> 
+							<% out.print(unidaGestoraEscolhida);%>
+						</th>
+					</tr>
+					<tr>
 						<th>CODIGO</th>
 						<th>UNIDADE EXECUTORA</th>
 						<th>CODIGO</th>
@@ -37,7 +60,6 @@
 						var="linha">
 						<c:set var="Total" value="${linha.valorTotalOrcado}" />
 						<tr>
-							<td>${linha.exercicioOrcamento}</td>
 							<td>${linha.unidadeExecutora.codigo}</td>
 							<td>${linha.unidadeExecutora.descricao}</td>
 							<td>${linha.unidadeOrcamentaria.codigo}</td>
@@ -48,7 +70,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="4">Total</th>
+						<th colspan="3">Total</th>
 						<th colspan="2" class="text-right">${Total}</th>
 					</tr>
 				</tfoot>

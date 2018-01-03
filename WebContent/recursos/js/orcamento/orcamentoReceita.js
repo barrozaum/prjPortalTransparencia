@@ -2,13 +2,13 @@ $(function() {
 	$(document)
 			.on(
 					"click",
-					"#btn_despesa_grupo_despesa",
+					"#btn_orcamento_receita",
 					function(e) {
 						e.preventDefault();
 						var exercicio = $("#id_exercicio").val();
+						var nivelConta = $("#id_nivel_conta").val();
 						var codigoUnidadeGestora = $("#id_unidade_gestora")
 								.val();
-						var nivelGrupo = $("#id_nivel_grupo").val();
 
 						var msg_erro = "";
 						// aplicando validação
@@ -16,15 +16,14 @@ $(function() {
 							msg_erro = msg_erro + "EXERCICIO INVÁLIDO <BR />";
 						}
 
-						if(nivelGrupo ===""){
-							msg_erro = msg_erro + "NÍVEL GRUPO INVÁLIDO <BR />";
+						if (nivelConta === "") {
+							msg_erro = msg_erro + "NÍVEL CONTA INVÁLIDA <BR />";
 						}
-						
+
 						if (codigoUnidadeGestora === "") {
 							msg_erro = msg_erro
 									+ "UNIDADE GESTORA INVÁLIDA <BR />";
 						}
-
 						if (msg_erro !== "") {
 							$("#msg_erro").html(
 									'<div class="alert alert-danger">'
@@ -35,8 +34,8 @@ $(function() {
 									.html(
 											'<img src="recursos/imagens/ajax-loader.gif" alt="carregando" title="carregando" width="20px">');
 
-							function_pesquisas_orcamento_despesa_grupo_despesa(
-									exercicio, nivelGrupo, codigoUnidadeGestora);
+							function_pesquisas_orcamento_receita(exercicio,
+									codigoUnidadeGestora, nivelConta);
 						}
 					});
 });
@@ -49,17 +48,17 @@ function limpando_unidade_gestora() {
 
 }
 
-function function_pesquisas_orcamento_despesa_grupo_despesa(exercicio,nivelGrupo,
-		codigoUnidadeGestora) {
+function function_pesquisas_orcamento_receita(exercicio, codigoUnidadeGestora,
+		nivelConta) {
 
 	$
 			.ajax({
 				method : "POST",
-				url : "recursos/includes/pesquisa/orcamento/despesa/pesquisa_despesa_grupo_despesa.jsp",
+				url : "recursos/includes/pesquisa/orcamento/receita/pesquisa_receita.jsp",
 				data : {
 					exercicio : exercicio,
 					codigoUnidadeGestora : codigoUnidadeGestora,
-					nivelGrupo : nivelGrupo
+					nivelConta : nivelConta
 				},
 				success : function(sucesso) {
 					$("#listar").html(sucesso);
@@ -73,36 +72,44 @@ function function_pesquisas_orcamento_despesa_grupo_despesa(exercicio,nivelGrupo
 												'copy',
 												{
 													extend : 'print',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-RECEITA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+  $('#id_descricao_unidade_gestora').val(),
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
 													footer : true
 												},
 
 												{
 													extend : 'excel',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-RECEITA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+  $('#id_descricao_unidade_gestora').val(),
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
 													footer : true
 												},
 												{
 													extend : 'csv',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-RECEITA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+  $('#id_descricao_unidade_gestora').val(),
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
 													footer : true
 
 												},
 												{
 													extend : 'pdfHtml5',
-													title : 'ORCAMENTO-DESPESA-GRUPO-DESPESA_'
+													title : 'ORCAMENTO-RECEITA_'
 															+ exercicio,
 													messageTop : 'Unidade Gestora '
-															+  $('#id_descricao_unidade_gestora').val(),
+															+ $(
+																	'#id_descricao_unidade_gestora')
+																	.val(),
 													footer : true
 												} ]
 

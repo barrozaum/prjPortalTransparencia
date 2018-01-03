@@ -21,6 +21,13 @@
 
 		mb_orcamento.pesquisaOrcamentoDespesaFuncaoSubFuncao(exercicio, codigoUnidadeGestora, codigoFuncao,
 				codigoSubFuncao);
+		Integer exercicioEscolhida = 0;
+		String unidaGestoraEscolhida = "Nenhum Resultado Localizado";
+		if (mb_orcamento.getOrcamentoDespesaFuncaoSubFuncao() != null) {
+			exercicioEscolhida = mb_orcamento.getOrcamentoDespesaFuncaoSubFuncao().getExercicioOrcamento();
+			unidaGestoraEscolhida = mb_orcamento.getOrcamentoDespesaFuncaoSubFuncao().getUnidadeGestora()
+					.getDescricaoUnidade();
+		}
 %>
 
 
@@ -30,41 +37,54 @@
 			<div class="panel-title">Orçamento</div>
 		</div>
 		<div class="panel-body text-left">
-				<table id="example" class="table table-hover table-striped">
-					<thead>
-						<tr>
-							<th>EXERCICIO</th>
-							<th>COD. FUNÇÃO</th>
-							<th>DESC. FUNÇÃO</th>
-							<th>COD. SUBFUNÇÃO</th>
-							<th>DESC. SUBFUNÇÃO</th>
-							<th>VALOR ORÇADO</th>
-						</tr>
-					</thead>
-					<tbody>
+			<table id="example" class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th colspan="1">EXERCICIO</th>
+						<th colspan="4">
+							<%
+									out.print(exercicioEscolhida);
+								%>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="1">Unidade Gestora</th>
+						<th colspan="4"><input type="hidden"
+							id="id_descricao_unidade_gestora"
+							value="<%out.print(unidaGestoraEscolhida);%>"> <% out.print(unidaGestoraEscolhida);%>
+						</th>
+					</tr>
+					<tr>
+						<th>COD. FUNÇÃO</th>
+						<th>DESC. FUNÇÃO</th>
+						<th>COD. SUBFUNÇÃO</th>
+						<th>DESC. SUBFUNÇÃO</th>
+						<th>VALOR ORÇADO</th>
+					</tr>
+				</thead>
+				<tbody>
 					<c:set var="Total" value="${0}" />
-						<c:forEach
-							items="${mb_orcamento.getListaOrcamentoDespesaFuncaoSubFuncao()}"
-							var="linha">
-							<c:set var="Total" value="${linha.valorTotalOrcado}" />
-							<tr>
-								<td>${linha.exercicioOrcamento}</td>
-								<td>${linha.funcao.codigo}</td>
-								<td>${linha.funcao.descricao}</td>
-								<td>${linha.subFuncao.codigo}</td>
-								<td>${linha.subFuncao.descricao}</td>
-								<td><strong>${linha.valor}</strong></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-					<tfoot>
+					<c:forEach
+						items="${mb_orcamento.getListaOrcamentoDespesaFuncaoSubFuncao()}"
+						var="linha">
+						<c:set var="Total" value="${linha.valorTotalOrcado}" />
 						<tr>
-							<th colspan="4">Total</th>
-							<th colspan="2" class="text-right">${Total}</th>
+							<td>${linha.funcao.codigo}</td>
+							<td>${linha.funcao.descricao}</td>
+							<td>${linha.subFuncao.codigo}</td>
+							<td>${linha.subFuncao.descricao}</td>
+							<td><strong>${linha.valor}</strong></td>
 						</tr>
-					</tfoot>
-				</table>
-			
+					</c:forEach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="3">Total</th>
+						<th colspan="2" class="text-right">${Total}</th>
+					</tr>
+				</tfoot>
+			</table>
+
 		</div>
 	</div>
 </div>

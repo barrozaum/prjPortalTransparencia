@@ -30,7 +30,9 @@ public class DaoOrcamentoDespesaUnidadeOrcamentaria extends Dao {
 		OrcamentoDespesaUnidadeOrcamentaria oduo = null;
 		Double valorTotalOrcado = 0.;
 		while (rs.next()) {
+			
 			oduo = new OrcamentoDespesaUnidadeOrcamentaria();
+			oduo.setUnidadeGestora(new DaoUnidadeGestora().findByCode(exercicio, unidadeGestora));
 			UnidadeExecutora ue = new UnidadeExecutora();
 			ue.setCodigo(rs.getString("codigo_orgao"));
 			ue.setDescricao(rs.getString("descricao_orgao"));
